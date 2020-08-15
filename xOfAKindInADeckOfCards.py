@@ -33,3 +33,14 @@ Input: deck = [1,1,2,2,2,2]
 Output: true
 Explanation: Possible partition [1,1],[2,2],[2,2].
 '''
+
+class Solution:
+    def hasGroupsSizeX(self, deck: List[int]) -> bool:
+        test = Counter(deck)
+        
+        
+        for x in range(2, len(deck) + 1):
+            if len(deck) % x == 0:
+                if all(values % x == 0 for values in test.values()):
+                    return True
+        return False
